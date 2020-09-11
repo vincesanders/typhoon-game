@@ -1,5 +1,5 @@
 export const initialState = {
-
+    cards: []
 }
 
 const reducer = (state, action) => {
