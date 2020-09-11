@@ -10,16 +10,12 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 board: action.payload.map((value, index) => {
-                    const card = {
+                    return {
                         id: index,
                         value,
                         flipped: false,
-                        selected: false
+                        selected: index === 0 ? true : false
                     };
-                    if (index === 0) {
-                        card.selected === true;
-                    }
-                    return card;
                 })
             }
         default:

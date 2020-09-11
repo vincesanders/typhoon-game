@@ -3,7 +3,7 @@ import React from 'react';
 const Card = props => {
     return (
         <div>
-            This is a card.
+            <h2>{props.card.value}</h2>
         </div>
     );
 }

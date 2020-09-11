@@ -7,7 +7,7 @@ const Board = () => {
     return (
         <div>
             {board.map(card => {
-                return <Card card={card} />
+                return <Card key={`Card-${card.id}`} card={card} />
             })}
         </div>
     );

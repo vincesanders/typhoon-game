@@ -8,7 +8,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setBoard(generateBoard()));
-  }, [])
+  }, [dispatch])
   return (
     <div className="App">
       <h1>Typhoon Game</h1>
