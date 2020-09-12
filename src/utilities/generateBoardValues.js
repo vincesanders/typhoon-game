@@ -9,18 +9,18 @@ const generateRandomInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max + 1));
   }
 
-const replaceValueAtRandomIndex = (value) => {
+const replaceValueAtRandomIndex = (array, value) => {
     //generate random int 0 to 44
     const randomNum = generateRandomInt(44)
-    values[randomNum] = value
+    array[randomNum] = value
 }
 
 const generateBoardValues = () => {
-    containsTyphoon = false;
-    containsHighScore = false;
-    values = []
+    let containsTyphoon = false;
+    let containsHighScore = false;
+    const values = []
 
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 36; i++) {
         //generate number from 1 to 100
         const randomNum = generateRandomInt(99) + 1;
         if (randomNum <= 6) {
@@ -47,10 +47,10 @@ const generateBoardValues = () => {
     }
 
     if (!containsTyphoon) {
-        replaceValueAtRandomIndex(-1);
+        replaceValueAtRandomIndex(values, -1);
     }
     if (!containsHighScore) {
-        replaceValueAtRandomIndex(55);
+        replaceValueAtRandomIndex(values, 55);
     }
 
     return values
