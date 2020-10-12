@@ -5,71 +5,25 @@ import { setBoard, setSelected, setFlipped } from './actions/actions';
 import generateBoard from './utilities/generateBoardValues';
 import Board from './components/Board';
 
+import { handleKeyDown } from './utilities/handleKeyDown';
+
 function App() {
   const dispatch = useDispatch();
   const selected = useRef(0);
 
+  const handleKeyEvent = e => {
+    selected.current = handleKeyDown(e, dispatch, selected.current);
+  }
+
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyEvent);
     dispatch(setBoard(generateBoard()));
 
     // cleanup this component
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleKeyEvent);
     };
   }, [dispatch]);
-
-  const keyLeft = () => {
-    if (selected.current > 0) {
-      selected.current = selected.current - 1
-      dispatch(setSelected(selected.current));
-    }
-  }
-
-  const keyRight = () => {
-    if (selected.current < 35) {
-      selected.current = selected.current + 1
-      dispatch(setSelected(selected.current));
-    }
-  }
-
-  const keyUp = () => {
-    //This code will have to change on smaller screens
-    //if the rows are less than 9.
-    if (selected.current > 8) {
-      selected.current = selected.current - 8
-      dispatch(setSelected(selected.current));
-    }
-  }
-
-  const keyDown = () => {
-    if (selected.current < 27) {
-      selected.current = selected.current + 8
-      dispatch(setSelected(selected.current));
-    }
-  }
-
-  const handleKeyDown = e => {
-    switch (e.keyCode) {
-      case 37:
-        keyLeft();
-        break;
-      case 38:
-        keyUp();
-        break;
-      case 39:
-        keyRight();
-        break;
-      case 40:
-        keyDown();
-        break;
-      case 13:
-        dispatch(setFlipped(selected.current));
-        break;
-      default:
-        break;
-    }
-  }
 
   return (
     <div className="App" >

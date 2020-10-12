@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { setFlipped } from '../actions/actions';
 import tornado from '../assets/images/tornado.png';
+import '../assets/styles/pulsingSelector.css';
 
 const Card = props => {
     const dispatch = useDispatch();
