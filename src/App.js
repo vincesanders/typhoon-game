@@ -37,14 +37,14 @@ function App() {
     //This code will have to change on smaller screens
     //if the rows are less than 9.
     if (selected.current > 8) {
-      selected.current = selected.current - 9
+      selected.current = selected.current - 8
       dispatch(setSelected(selected.current));
     }
   }
 
   const keyDown = () => {
     if (selected.current < 27) {
-      selected.current = selected.current + 9
+      selected.current = selected.current + 8
       dispatch(setSelected(selected.current));
     }
   }
@@ -81,8 +81,9 @@ function App() {
 
 const MainHeader = styled.h1`
   width: 100%;
-  font-size: 48px;
+  font-size: 60px;
   text-align: center;
+  color: #2D87E0;
 `
 
 export default App;
