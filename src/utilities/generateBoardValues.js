@@ -20,7 +20,7 @@ const generateBoardValues = () => {
     let containsHighScore = false;
     const values = []
 
-    for (let i = 0; i < 36; i++) {
+    for (let i = 0; i < 32; i++) {
         //generate number from 1 to 100
         const randomNum = generateRandomInt(99) + 1;
         if (randomNum <= 6) {
